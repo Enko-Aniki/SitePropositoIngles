@@ -1,0 +1,12 @@
+#wellcome{
+    text-align: center;
+    max-width: 500px;
+}
+
+#wellcome h2, #wellcome p {
+        margin-bottom: 1rem;
+}
+
+#wellcome p {
+    color: #8435de;
+}
