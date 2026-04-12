@@ -1,0 +1,16 @@
+#questions {
+    text-align: center;
+    max-width: 500px;
+    background-color: blueviolet;
+    border-radius: 1rem;
+    padding: 2rem;
+
+}
+
+#questions h2{
+        margin-bottom: 2rem;
+}
+
+#questions p {
+    color: #002868;
+}

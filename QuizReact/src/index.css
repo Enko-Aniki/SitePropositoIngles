@@ -1,8 +1,9 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  color: #002868;
+  font-family: lucida console, monospace;
+  color: #ffffff;
+  
   
 }
 
@@ -10,14 +11,16 @@
 body,html{
   min-height: 100vh;
   height: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: #002868;
   max-width: 100%;
   align-self: center;
-
+  display: flex;
+  justify-content: center; /* centraliza horizontal */
+  align-items: center;     /* centraliza vertical */
 }
 
 img{
-  max-width: 30%;
+  max-width: 100%;
 }
 
 button{
