@@ -1,13 +1,14 @@
 import { useContext } from "react"
 import { QuizContext } from "../context/quiz"
 
-import './Option.css'
-const Option = ({option}) => {
+import './Options.css'
 
-    const [quizState, dispatch] = useContext(QuizContext)   
+const Option = ({ option, selectoption, answer  }) => {
+  const { state: quizState, dispatch } = useContext(QuizContext)
+
   return (
-    <div>
-      <p>{option}</p>
+    <div className="option" onClick={ selectoption()}>
+      <h3>{option}</h3>
     </div>
   )
 }

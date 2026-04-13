@@ -1,0 +1,26 @@
+.option {
+  background-color: #ff0000;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+  color: white;
+  text-align: center;
+
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.option:hover {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+#options-container {
+  width: 100%;
+}
+
+#options-container .option p {
+  margin: 0;
+}
