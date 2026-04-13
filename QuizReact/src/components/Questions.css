@@ -1,7 +1,7 @@
 #questions {
     text-align: center;
     max-width: 500px;
-    background-color: blueviolet;
+    background-color: #FF91A4;
     border-radius: 1rem;
     padding: 2rem;
 
@@ -12,5 +12,5 @@
 }
 
 #questions p {
-    color: #002868;
+    color: #00286800;
 }

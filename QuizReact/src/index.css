@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: lucida console, monospace;
-  color: #ffffff;
+  color: #000000;
   
   
 }
@@ -11,7 +11,7 @@
 body,html{
   min-height: 100vh;
   height: 100%;
-  background-color: #002868;
+  background-color: #4682B4;
   max-width: 100%;
   align-self: center;
   display: flex;
@@ -29,16 +29,16 @@ button{
   cursor: pointer;
   padding: 0.8rem 1.5rem;
   background: linear-gradient(90deg, 
-  rgba(191, 10, 48,1) 0% , 
-  rgba(179, 25, 66, 1) 100%);
+  rgb(255, 255, 255) 0% , 
+  rgb(255, 255, 255) 100%);
   border-radius:  3rem;
   border: none;
   }
 
   button:hover{
     background: linear-gradient(90deg,
-     rgba( 179, 25, 66,1) 0,
-     rgba(191, 10, 48,1 ) 100% );  
+     rgb(255, 255, 255) 0,
+     rgb(255, 255, 255) 100% );  
   
   }
 
