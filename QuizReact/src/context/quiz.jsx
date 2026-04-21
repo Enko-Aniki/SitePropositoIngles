@@ -1,6 +1,4 @@
 import { createContext, useReducer } from "react"
-
-// Data
 import questions from "../data/questions_english_a2_b1.js"
 
 const STAGES = ["Start", "Playing", "End"]
@@ -9,8 +7,9 @@ const initialState = {
   gameStage: STAGES[0],
   questions,
   currentQuestion: 0,
-  score:0,
+  score: 0,
   answerSelected: false,
+  selectedOption: null,   // ← adicionado
 }
 
 const quizReducer = (state, action) => {
@@ -26,27 +25,47 @@ const quizReducer = (state, action) => {
       const reorderedQuestions = [...state.questions].sort(
         () => Math.random() - 0.5
       )
-
       return {
         ...state,
         questions: reorderedQuestions,
       }
     }
 
+    case "SELECT_OPTION": {
+  // Se o usuário já clicou em uma opção, travamos para não ganhar pontos extras
+  if (state.answerSelected) return state;
+
+  const answer = action.payload.answer;
+  const option = action.payload.option;
+  let correct = 0;
+
+  // Comparação real entre a resposta certa e a escolhida
+  if (option === answer) correct = 1;
+
+  return {
+    ...state,
+    score: state.score + correct,
+    answerSelected: true, // Indica que a pergunta foi respondida
+    selectedOption: option, // Salva qual foi a escolha para o CSS
+  };
+}
+    
     case "CHANGE_QUESTIONS": {
       const nextQuestion = state.currentQuestion + 1
-
       const endGame = nextQuestion >= state.questions.length
 
       return {
         ...state,
         currentQuestion: nextQuestion,
         gameStage: endGame ? STAGES[2] : state.gameStage,
+        selectedOption: null,    // ← reseta ao avançar
+        answerSelected: false,   // ← reseta ao avançar
       }
     }
+
     case "NEW_GAME":
-      return initialState 
-      
+      return initialState
+
     default:
       return state
   }

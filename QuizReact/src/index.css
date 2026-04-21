@@ -1,44 +1,48 @@
+/* Configurações Gerais */
 * {
-  padding: 0;
-  margin: 0;
-  font-family: lucida console, monospace;
-  color: #000000;
-  
-  
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-body,html{
-  min-height: 100vh;
-  height: 100%;
-  background-color: #4682B4;
-  max-width: 100%;
-  align-self: center;
-  display: flex;
-  justify-content: center; /* centraliza horizontal */
-  align-items: center;     /* centraliza vertical */
+body, html {
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Fundo neutro para destacar o quiz */
+    /* Adicionando um leve padrão de listras sutis (opcional) */
+    background-image: radial-gradient(#002868 0.5px, #f0f0f0 0.5px);
+    background-size: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 img{
   max-width: 100%;
 }
 
-button{
-  font-weight: bold;
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 0.8rem 1.5rem;
-  background: linear-gradient(90deg, 
-  rgb(255, 255, 255) 0% , 
-  rgb(255, 255, 255) 100%);
-  border-radius:  3rem;
-  border: none;
-  }
+/* Botões */
+button {
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.8rem 2rem;
+    background-color: #BF0A30; /* Vermelho Americano */
+    color: white;
+    border-radius: 0.5rem;
+    border: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+    box-shadow: 0 4px 0 #8b0000; /* Efeito 3D */
+}
 
-  button:hover{
-    background: linear-gradient(90deg,
-     rgb(255, 255, 255) 0,
-     rgb(255, 255, 255) 100% );  
-  
-  }
+button:hover {
+    background-color: #e60000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #8b0000;
+}
 
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #8b0000;
+}

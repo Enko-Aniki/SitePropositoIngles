@@ -1,16 +1,15 @@
+/* Área das Perguntas */
 #questions {
     text-align: center;
     max-width: 500px;
-    background-color: #FF91A4;
+    background-color: #002868; /* Azul Americano */
     border-radius: 1rem;
     padding: 2rem;
-
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 40, 104, 0.3);
 }
 
-#questions h2{
-        margin-bottom: 2rem;
-}
-
-#questions p {
-    color: #00286800;
+#questions h2 {
+    margin-bottom: 2rem;
+    color: #ffffff;
 }

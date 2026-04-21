@@ -1,26 +1,36 @@
+/* Opções de Resposta */
 .option {
-  background-color: #ff4f46;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  cursor: pointer;
-
-  color: rgb(255, 5, 5);
-  text-align: center;
-
-  opacity: 0.9;
-  transition: 0.3s;
+    background-color: white;
+    color: #002868;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid transparent;
+    font-weight: bold;
 }
 
 .option:hover {
-  opacity: 1;
-  transform: scale(1.02);
+    transform: scale(1.02);
+    border-color: #BF0A30; /* Borda vermelha no hover */
 }
 
-#options-container {
-  width: 100%;
+.option p {
+    margin-bottom: 0;
+    color: #002868;
 }
 
-#options-container .option p {
-  margin: 0;
+/* Feedback de Resposta */
+.correct {
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+.correct p { color: white !important; }
+
+.wrong {
+    background-color: #BF0A30 !important;
+    color: white !important;
+    opacity: 0.8;
 }

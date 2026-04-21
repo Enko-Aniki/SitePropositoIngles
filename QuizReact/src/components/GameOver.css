@@ -1,21 +1,24 @@
-
+/* Tela Final */
 #gameover {
-  text-align: center;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
+    text-align: center;
+    max-width: 500px;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 4px double #002868;
 }
 
-#gameover h2,
-#gameover p {
-  margin-bottom: 1rem;
-}
-
-#gameover p {
-  color: #000000;
+#gameover h2 {
+    color: #BF0A30;
+    margin-bottom: 1rem;
 }
 
 #gameover img {
-  margin: 2rem auto;
-  height: 200px;
+    margin: 1.5rem auto;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.hide {
+    display: none !important;
 }

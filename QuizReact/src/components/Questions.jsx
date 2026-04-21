@@ -16,9 +16,13 @@ const Questions = () => {
     dispatch({ type: "CHANGE_QUESTIONS" })
   }
 
-  const selectoption = (option) => {
-    dispatch({ type: "SELECT_OPTION", payload: { answer: currentQuestion.answer, option } }) 
-  }
+ const onSelectOption = (option) => {
+  // Corrigido: era currentQuestion.answer, não .option
+  dispatch({ 
+    type: "SELECT_OPTION", 
+    payload: { answer: currentQuestion.answer, option } 
+  });
+};
 
   return (
     <div id="questions">
@@ -29,16 +33,22 @@ const Questions = () => {
       <h2>{currentQuestion.question}</h2>
 
       <div id="options-container">
-        {currentQuestion.options.map((option, index) => (
-          <Option key={index} option={option} answer={currentQuestion.answer}
-          selectoption={() => selectoption(option)} />
-        ))}
+       {currentQuestion.options.map((option) => (
+  <Option 
+    key={option} 
+    option={option} 
+    answer={currentQuestion.answer}
+    selectOption={() => onSelectOption(option)} 
+  />
+))}
       </div>
-
-
+        
+        {quizState.answerSelected && (
           <button onClick={handleNextQuestion}>
         Próximo
       </button>
+        )}
+          
     
     </div>
   )

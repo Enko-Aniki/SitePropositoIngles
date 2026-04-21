@@ -9,7 +9,7 @@ const GameOver = () => {
     <div id ="gameover">
       <h2>Game Over</h2>
       <p>Pontuação: {quizState.score}</p>
-      <p> VocÊ acertou {quizState.score} de {quizState.questions.length} perguntas </p>
+      <p> Você acertou {quizState.score} de {quizState.questions.length} perguntas </p>
       <img src={Welldone} alt="Imagem de parabéns" />
       <p></p>
       <button onClick={() => dispatch({ type: "NEW_GAME" })}>
