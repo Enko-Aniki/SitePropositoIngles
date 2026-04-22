@@ -54,6 +54,51 @@ const data = [
     options: ["Obrigação", "Conselho ou sugestão", "Capacidade física", "Permissão formal"],
     answer: "Conselho ou sugestão",
   },
+  {
+    question: "Qual é a forma correta para a frase: 'If I _____ rich, I would travel the world'?",
+    options: ["was", "am", "were", "will be"],
+    answer: "were",
+  },
+  {
+    question: "Qual preposição completa corretamente a frase: 'She is interested ___ learning Japanese'?",
+    options: ["on", "in", "at", "for"],
+    answer: "in",
+  },
+  {
+    question: "O que significa o falso cognato 'Actually' em português?",
+    options: ["Atualmente", "Na verdade", "Agilmente", "Através"],
+    answer: "Na verdade",
+  },
+  {
+    question: "Qual frase abaixo está no Past Continuous?",
+    options: [
+      "I was eating dinner",
+      "I ate dinner",
+      "I have eaten dinner",
+      "I will eat dinner",
+    ],
+    answer: "I was eating dinner",
+  },
+  {
+    question: "Qual é o significado da expressão idiomática 'Piece of cake'?",
+    options: ["Algo muito difícil", "Um pedaço de bolo", "Algo muito fácil", "Estar com fome"],
+    answer: "Algo muito fácil",
+  },
+  {
+    question: "Qual destes pronomes relativos é usado exclusivamente para pessoas?",
+    options: ["Which", "Who", "Where", "Whose"],
+    answer: "Who",
+  },
+  {
+    question: "Escolha o modal verb que indica proibição: 'You ____ smoke in the hospital.'",
+    options: ["mustn't", "don't have to", "shouldn't", "can"],
+    answer: "mustn't",
+  },
+  {
+    question: "Qual é o particípio passado (Past Participle) do verbo 'Write'?",
+    options: ["Wrote", "Writed", "Written", "Writing"],
+    answer: "Written",
+  }
 ];
 
 export default data;
