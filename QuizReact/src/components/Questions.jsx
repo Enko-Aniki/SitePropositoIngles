@@ -13,7 +13,13 @@ const Questions = () => {
   const currentQuestion = quizState.questions[quizState.currentQuestion]
 
   const handleNextQuestion = () => {
+    const nextQuestionIndex = quizState.currentQuestion + 1
+    const hasNextQuestion = nextQuestionIndex < quizState.questions.length
+
     dispatch({ type: "CHANGE_QUESTIONS" })
+    if (hasNextQuestion) {
+      dispatch({ type: "REORDER_OPTION" })
+    }
   }
 
  const onSelectOption = (option) => {
@@ -45,8 +51,8 @@ const Questions = () => {
         
         {quizState.answerSelected && (
           <button onClick={handleNextQuestion}>
-        Próximo
-      </button>
+            Próximo
+          </button>
         )}
           
     

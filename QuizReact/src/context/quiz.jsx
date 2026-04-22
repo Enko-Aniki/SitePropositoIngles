@@ -30,6 +30,22 @@ const quizReducer = (state, action) => {
         questions: reorderedQuestions,
       }
     }
+    case "REORDER_OPTION": {
+      const questions = [...state.questions]
+      const currentQuestion = questions[state.currentQuestion]
+      const options = [...currentQuestion.options]
+      const reorderedOptions = options.sort(() => Math.random() - 0.5)
+
+      questions[state.currentQuestion] = {
+        ...currentQuestion,
+        options: reorderedOptions,
+      }
+
+      return {
+        ...state,
+        questions,
+      }
+    }
 
     case "SELECT_OPTION": {
   // Se o usuário já clicou em uma opção, travamos para não ganhar pontos extras
