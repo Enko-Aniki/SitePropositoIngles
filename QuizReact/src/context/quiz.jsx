@@ -84,7 +84,7 @@ const quizReducer = (state, action) => {
       return {
         ...state,
         currentQuestion: nextQuestion,
-        gameStage: endGame ? STAGES[2] : state.gameStage,
+        gameStage: endGame ? STAGES[3] : state.gameStage,
         selectedOption: null,    // ← reseta ao avançar
         answerSelected: false,   // ← reseta ao avançar
       }
