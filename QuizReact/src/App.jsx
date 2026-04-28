@@ -10,6 +10,7 @@ import { QuizContext } from "./context/quiz"
 
 // Hooks
 import { useContext, useEffect } from "react"
+import { PickLevel } from './components/PickLevel'
 
 function App() {
   const { state: quizState, dispatch } = useContext(QuizContext)
@@ -24,6 +25,7 @@ function App() {
       <h1>Quiz de Inglês</h1>
 
       {quizState.gameStage === "Start" && <Wellcome />}
+      {quizState.gameStage === "Pick" && <PickLevel />}
       {quizState.gameStage === "Playing" && <Questions />}
       {quizState.gameStage === "End" && <GameOver />}
     </div>
