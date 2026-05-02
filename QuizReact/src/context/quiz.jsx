@@ -3,9 +3,17 @@ import questions from "../data/questionsfull.js"
 
 const STAGES = ["Start","Pick" ,"Playing", "End"]
 
+const getRandomQuestions = (questionsArray, amount = 10) => {  // 👈 função aqui
+  return [...questionsArray]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, amount)
+}
+
+
 const initialState = {
   gameStage: STAGES[0],
-  questions,
+  categories: questions,
+  questions: [],  // ← inicia vazio, será preenchido ao escolher categoria
   currentQuestion: 0,
   score: 0,
   answerSelected: false,
@@ -31,9 +39,10 @@ const quizReducer = (state, action) => {
       }
     }
     case "START_GAME": {
+      const randomQuestions = getRandomQuestions(action.payload, 10)  // 👈 sorteia aqui
       return {
         ...state,
-        questions: action.payload,
+        questions: randomQuestions,
         gameStage: STAGES[2],
         currentQuestion: 0,
         score: 0,

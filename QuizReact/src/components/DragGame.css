@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+
+#drag-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 640px;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  font-family: 'Syne', sans-serif;
+}
+
+/* Contador de pergunta */
+#drag-game > p:first-child {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #0A3161;
+  background: #e8eef8;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin: 0;
+}
+
+/* Título */
+#drag-game h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0A3161;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* Área onde o usuário monta a frase */
+#arranged-area {
+  width: 100%;
+  min-height: 72px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 14px;
+  border: 2.5px dashed #0A3161;
+  background: #f0f5ff;
+  transition: background 0.2s;
+}
+
+#arranged-area:hover {
+  background: #e4ecff;
+}
+
+/* Texto placeholder quando vazio */
+.placeholder {
+  color: #8fa8cc;
+  font-size: 0.9rem;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+/* Área com palavras disponíveis */
+#available-area {
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 2px solid #d0dff5;
+}
+
+/* Chips de palavras — base */
+.word-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+
+  /* palavras disponíveis: estilo padrão */
+  background: #0A3161;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(10, 49, 97, 0.25);
+}
+
+.word-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(10, 49, 97, 0.3);
+}
+
+.word-chip:active {
+  cursor: grabbing;
+  transform: scale(0.96);
+}
+
+/* Chips já colocados na área de resposta */
+.word-chip.arranged {
+  background: #ffffff;
+  color: #0A3161;
+  border: 2px solid #0A3161;
+  box-shadow: 0 2px 6px rgba(10, 49, 97, 0.12);
+}
+
+.word-chip.arranged:hover {
+  background: #f0f5ff;
+}
+
+/* Dica */
+.tip {
+  font-size: 0.85rem;
+  color: #4a6fa5;
+  background: #eef3ff;
+  border-left: 3px solid #0A3161;
+  padding: 0.6rem 1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Syne', sans-serif;
+}
+
+/* Botão confirmar */
+#drag-game button {
+  margin-top: 0.5rem;
+  padding: 0.75rem 2.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: none;
+  border-radius: 10px;
+  background: #0A3161;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(10, 49, 97, 0.3);
+}
+
+#drag-game button:hover:not(:disabled) {
+  background: #0d3d7a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(10, 49, 97, 0.35);
+}
+
+#drag-game button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+#drag-game button:disabled {
+  background: #c5d3e8;
+  color: #8fa8cc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  #drag-game {
+    padding: 1.2rem 1rem;
+    gap: 1rem;
+  }
+
+  .word-chip {
+    font-size: 0.82rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  #drag-game h2 {
+    font-size: 1.1rem;
+  }
+}

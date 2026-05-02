@@ -4,11 +4,14 @@ import './index.css'
 import App from './App.jsx'
 
 import { QuizProvider } from './context/quiz.jsx'
+import { DragProvider } from './context/Drag_N_Drop.jsx'  // 👈 importar o Provider, não o DragGame
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <QuizProvider>
-      <App />
+      <DragProvider>        
+        <App />
+      </DragProvider>       
     </QuizProvider>
   </StrictMode>,
 )

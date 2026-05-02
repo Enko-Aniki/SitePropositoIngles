@@ -4,30 +4,36 @@ import './App.css'
 import Wellcome from "./components/Wellcome"
 import Questions from './components/Questions'
 import GameOver from './components/GameOver'
+import DragGame from './components/DragGame'
 
 // Context
 import { QuizContext } from "./context/quiz"
+import { DragContext } from "./context/Drag_N_Drop"
 
 // Hooks
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { PickLevel } from './components/PickLevel'
 
 function App() {
-  const { state: quizState, dispatch } = useContext(QuizContext)
-
-  // Embaralhar perguntas ao iniciar
-  useEffect(() => {
-    dispatch({ type: "REORDER_QUESTIONS" })
-  }, [dispatch])
+  const { state: quizState } = useContext(QuizContext)
+  const { state: dragState } = useContext(DragContext)
 
   return (
     <div className="App">
       <h1>Quiz de Inglês</h1>
 
       {quizState.gameStage === "Start" && <Wellcome />}
-      {quizState.gameStage === "Pick" && <PickLevel />}
+
+      {/* 👇 só mostra PickLevel quando nenhum jogo está ativo */}
+      {quizState.gameStage === "Pick" && dragState.gameStage === "Pick" && <PickLevel />}
+
+      {/* Modo Quiz */}
       {quizState.gameStage === "Playing" && <Questions />}
       {quizState.gameStage === "End" && <GameOver />}
+
+      {/* Modo Drag and Drop */}
+      {dragState.gameStage === "Playing" && <DragGame />}
+      {dragState.gameStage === "End" && <GameOver />}
     </div>
   )
 }

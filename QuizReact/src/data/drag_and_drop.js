@@ -1,0 +1,55 @@
+const dragQuestions = [
+  {
+    category: "English A1",
+    questions: [
+      { sentence: "I am a student", tip: "Verb to be with 'I'." },
+      { sentence: "She is my sister", tip: "Verb to be with 'she'." },
+      { sentence: "They are my friends" },
+      { sentence: "The cat is on the table" },
+      { sentence: "I have a dog and a cat" },
+      { sentence: "We are at school today" },
+      { sentence: "He has a red car" },
+      { sentence: "My name is Maria" },
+      { sentence: "The apple is on the table" },
+      { sentence: "I like cats and dogs" },
+      { sentence: "She has blue eyes" },
+      { sentence: "The sky is very blue today" },
+    ],
+  },
+  {
+    category: "English A2_B1",
+    questions: [
+      { sentence: "I went to the gym yesterday", tip: "Simple Past of 'go'." },
+      { sentence: "She has lived here for three years", tip: "Present Perfect with 'for'." },
+      { sentence: "They were watching TV when I arrived", tip: "Past Continuous." },
+      { sentence: "He finishes work at five every day" },
+      { sentence: "If it rains we will stay at home", tip: "First Conditional." },
+      { sentence: "I have already finished my homework" },
+      { sentence: "She is taller than her brother" },
+      { sentence: "We have known each other since childhood" },
+      { sentence: "You should see a doctor about that" },
+      { sentence: "I did not sleep well last night" },
+      { sentence: "He was born in nineteen ninety five" },
+      { sentence: "Have you ever been to London" },
+    ],
+  },
+  {
+    category: "English C1",
+    questions: [
+      { sentence: "Had I known I would have left earlier", tip: "Third Conditional with inversion." },
+      { sentence: "Not only did she pass but she also scored highest", tip: "Inversion after 'Not only'." },
+      { sentence: "Little did he know he was being watched", tip: "Inversion after 'Little'." },
+      { sentence: "No sooner had I arrived than it started raining", tip: "Inversion after 'No sooner'." },
+      { sentence: "The evidence was irrefutable and the jury had no choice" },
+      { sentence: "Rarely have I seen such a talented musician" },
+      { sentence: "I suggest that he come early to the meeting", tip: "Subjunctive mood." },
+      { sentence: "By the time we arrive the movie will have started", tip: "Future Perfect." },
+      { sentence: "She pored over the contract before signing it" },
+      { sentence: "The policy was designed to eradicate corruption in public office" },
+      { sentence: "His argument was specious but it convinced many people" },
+      { sentence: "The CEO proved to be prescient about the overseas expansion" },
+    ],
+  },
+]
+
+export default dragQuestions
