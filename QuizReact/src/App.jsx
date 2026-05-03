@@ -31,9 +31,9 @@ function App() {
       {quizState.gameStage === "Playing" && <Questions />}
       {quizState.gameStage === "End" && <GameOver />}
 
-      {/* Modo Drag and Drop */}
+     {/* Modo Drag and Drop */}
       {dragState.gameStage === "Playing" && <DragGame />}
-      {dragState.gameStage === "End" && <GameOver />}
+      {dragState.gameStage === "End" && quizState.gameStage === "Pick" && <GameOver />}  {/* 👈 adicionou a condição */}
     </div>
   )
 }

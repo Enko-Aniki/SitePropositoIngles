@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react"  // 👈 removido "act"
+import { createContext, useReducer } from "react" 
 import dragQuestions from "../data/drag_and_drop.js"
 
 const STAGES = ["Pick", "Playing", "End"]
@@ -26,23 +26,23 @@ const dragReducer = (state, action) => {
   switch (action.type) {
 
     case "START_DRAG_GAME": {         // 👈 era "START_GAME"
-      const randomQuestions = getRandomQuestions(action.payload, 5).map((q) => ({  // 👈 era "playload"
+      const randomQuestions = getRandomQuestions(action.payload, 5).map((q) => ({  
         ...q,
         shuffledWords: shuffleWords(q.sentence),
-        correctOrder: q.sentence.split(" "),  // 👈 tinha espaço errado
+        correctOrder: q.sentence.split(" "),  
       }))
       return {
         ...state,
         questions: randomQuestions,
         gameStage: STAGES[1],
-        currentQuestion: 0,           // 👈 era "currentQuestions"
+        currentQuestion: 0,           
         score: 0,
         completed: false,
       }
     }
 
     case "CHECK_ANSWER": {
-      const current = state.questions[state.currentQuestion]  // 👈 lógica reescrita
+      const current = state.questions[state.currentQuestion] 
       const isCorrect =
         action.payload.join(" ").toLowerCase() ===
         current.correctOrder.join(" ").toLowerCase()
@@ -59,7 +59,7 @@ const dragReducer = (state, action) => {
       }
     }
 
-    case "NEW_DRAG_GAME":             // 👈 era "NEW_DRAG_GAMES"
+    case "NEW_DRAG_GAME":             
       return initialState
 
     default:
