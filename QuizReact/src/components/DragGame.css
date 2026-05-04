@@ -180,3 +180,8 @@
     font-size: 1.1rem;
   }
 }
+.word-chip.drag-over {
+  outline: 2px dashed #0A3161;
+  outline-offset: 3px;
+  transform: scale(1.08);
+}

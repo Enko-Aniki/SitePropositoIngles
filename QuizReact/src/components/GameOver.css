@@ -22,3 +22,12 @@
 .hide {
     display: none !important;
 }
+.mode-label {
+  font-size: 0.85rem;
+  color: #0A3161;
+  background: #e8eef8;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
