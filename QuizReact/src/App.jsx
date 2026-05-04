@@ -5,6 +5,7 @@ import Wellcome from "./components/Wellcome"
 import Questions from './components/Questions'
 import GameOver from './components/GameOver'
 import DragGame from './components/DragGame'
+import AccessibilityBar from './components/AccessibilityBar'
 
 // Context
 import { QuizContext } from "./context/quiz"
@@ -22,18 +23,20 @@ function App() {
     <div className="App">
       <h1>Quiz de Inglês</h1>
 
+      {/* Barra de acessibilidade sempre visível */}
+      <AccessibilityBar />
+
       {quizState.gameStage === "Start" && <Wellcome />}
 
-      {/* 👇 só mostra PickLevel quando nenhum jogo está ativo */}
       {quizState.gameStage === "Pick" && dragState.gameStage === "Pick" && <PickLevel />}
 
       {/* Modo Quiz */}
       {quizState.gameStage === "Playing" && <Questions />}
       {quizState.gameStage === "End" && <GameOver />}
 
-     {/* Modo Drag and Drop */}
+      {/* Modo Drag and Drop */}
       {dragState.gameStage === "Playing" && <DragGame />}
-      {dragState.gameStage === "End" && quizState.gameStage === "Pick" && <GameOver />}  {/* 👈 adicionou a condição */}
+      {dragState.gameStage === "End" && quizState.gameStage === "Pick" && <GameOver />}
     </div>
   )
 }

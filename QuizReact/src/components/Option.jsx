@@ -1,23 +1,42 @@
-import { useContext } from "react";
-import { QuizContext } from "../context/quiz";
-import './Options.css';
+import { useContext } from "react"
+import { QuizContext } from "../context/quiz"
+import './Options.css'
 
-// Corrigido: selectOption com "O" maiúsculo para bater com o componente pai
 const Option = ({ option, selectOption, answer }) => {
-  const { state: quizState } = useContext(QuizContext);
+  const { state: quizState } = useContext(QuizContext)
+
+  const isCorrect = quizState.answerSelected && option === answer
+  const isWrong = quizState.answerSelected && option !== answer
+  const isSelected = quizState.selectedOption === option
+
+  let ariaLabel = option
+  if (quizState.answerSelected) {
+    if (isCorrect) ariaLabel += ", resposta correta"
+    else if (isSelected) ariaLabel += ", sua resposta, incorreta"
+  }
 
   return (
-    <div 
-      // Lógica de CSS: se já respondeu, verifica se esta é a correta ou a errada
+    <div
       className={`option 
-        ${quizState.answerSelected && option === answer ? "correct" : ""} 
-        ${quizState.answerSelected && option !== answer ? "wrong" : ""}
-      `} 
-      onClick={() => selectOption()}
+        ${isCorrect ? "correct" : ""}
+        ${isWrong ? "wrong" : ""}
+      `}
+      onClick={() => !quizState.answerSelected && selectOption()}
+      onKeyDown={(e) => {
+        if ((e.key === "Enter" || e.key === " ") && !quizState.answerSelected) {
+          e.preventDefault()
+          selectOption()
+        }
+      }}
+      role="button"
+      tabIndex={quizState.answerSelected ? -1 : 0}
+      aria-disabled={quizState.answerSelected}
+      aria-label={ariaLabel}
+      aria-pressed={isSelected}
     >
       <h3>{option}</h3>
     </div>
-  );
-};
+  )
+}
 
-export default Option;
+export default Option

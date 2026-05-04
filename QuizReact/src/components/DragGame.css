@@ -185,3 +185,35 @@
   outline-offset: 3px;
   transform: scale(1.08);
 }
+/* Botão de leitura no DragGame */
+.speak-words-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: #e8eef8;
+  color: #0A3161;
+  border: 1.5px solid #0A3161;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: background 0.15s;
+  box-shadow: none;
+  text-transform: none;
+}
+
+.speak-words-btn:hover {
+  background: #d0dff5;
+  transform: none;
+  box-shadow: none;
+}
+
+.speak-words-btn:focus-visible {
+  outline: 3px solid #BF0A30;
+  outline-offset: 2px;
+}
+
+/* Focus visível nos chips via teclado */
+.word-chip:focus-visible {
+  outline: 3px solid #BF0A30;
+  outline-offset: 2px;
+}

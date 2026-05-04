@@ -13,3 +13,45 @@
     margin-bottom: 2rem;
     color: #ffffff;
 }
+/* Botão de leitura da pergunta */
+.speak-question-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.15s, border-color 0.15s;
+  box-shadow: none;
+  text-transform: none;
+}
+
+.speak-question-btn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: #fff;
+  transform: none;
+  box-shadow: none;
+}
+
+.speak-question-btn:focus-visible {
+  outline: 3px solid #BF0A30;
+  outline-offset: 2px;
+}
+
+/* Dica exibida após responder */
+.question-tip {
+  background: rgba(255,255,255,0.1);
+  border-left: 3px solid #FFD700;
+  color: #FFD700;
+  padding: 0.6rem 1rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}

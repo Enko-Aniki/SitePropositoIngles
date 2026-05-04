@@ -46,3 +46,130 @@ button:active {
     transform: translateY(2px);
     box-shadow: 0 2px 0 #8b0000;
 }
+
+/* ── Acessibilidade: Alto Contraste ─────────────── */
+body.high-contrast,
+body.high-contrast html {
+  background-color: #000 !important;
+  background-image: none !important;
+  color: #fff !important;
+}
+
+body.high-contrast .App h1 {
+  color: #fff;
+}
+
+/* Botões padrão em alto contraste */
+body.high-contrast button {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: none;
+}
+
+body.high-contrast button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Cards / containers */
+body.high-contrast #wellcome,
+body.high-contrast #gameover,
+body.high-contrast #questions,
+body.high-contrast #category,
+body.high-contrast #drag-game,
+body.high-contrast .mode-box {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+body.high-contrast #questions h2,
+body.high-contrast #gameover h2,
+body.high-contrast #wellcome h2,
+body.high-contrast #category h2 {
+  color: #fff !important;
+}
+
+/* Opções de resposta */
+body.high-contrast .option {
+  background: #111;
+  color: #fff;
+  border: 2px solid #aaa;
+}
+
+body.high-contrast .option:hover {
+  border-color: #fff;
+}
+
+body.high-contrast .option.correct {
+  background: #004400 !important;
+  border-color: #00ff00 !important;
+  color: #00ff00 !important;
+}
+
+body.high-contrast .option.wrong {
+  background: #440000 !important;
+  border-color: #ff4444 !important;
+  color: #ff4444 !important;
+}
+
+/* Drag & Drop */
+body.high-contrast .word-chip {
+  background: #fff;
+  color: #000;
+  border: 2px solid #fff;
+}
+
+body.high-contrast .word-chip.arranged {
+  background: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+body.high-contrast #arranged-area {
+  border-color: #fff;
+  background: #111;
+}
+
+body.high-contrast #available-area {
+  border-color: #aaa;
+  background: #000;
+}
+
+body.high-contrast .tip {
+  background: #111;
+  color: #ffe066;
+  border-left-color: #ffe066;
+}
+
+/* Botões speak */
+body.high-contrast .speak-question-btn,
+body.high-contrast .speak-words-btn {
+  background: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+body.high-contrast .mode-label {
+  background: #222;
+  color: #fff;
+}
+
+/* ── Skip to content (navegação por teclado) ────── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: #002868;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: bold;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
