@@ -52,7 +52,7 @@ const dragReducer = (state, action) => {
 
       return {
         ...state,
-        score: state.score + (isCorrect ? 1 : 0),
+        score: state.score + (isCorrect ? 100 : 0),
         currentQuestion: nextQuestion,
         gameStage: endGame ? STAGES[2] : state.gameStage,
         completed: endGame,

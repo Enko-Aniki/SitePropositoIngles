@@ -76,7 +76,7 @@ const quizReducer = (state, action) => {
   let correct = 0;
 
   // Comparação real entre a resposta certa e a escolhida
-  if (option === answer) correct = 1;
+  if (option === answer) correct = 100;
 
   return {
     ...state,

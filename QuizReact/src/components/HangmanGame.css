@@ -1,0 +1,168 @@
+#hangman-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 600px;
+  width: 100%;
+  padding: 1.5rem 1rem;
+  font-family: 'Syne', sans-serif;
+}
+
+.hangman-counter {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #0A3161;
+  background: #e8eef8;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin: 0;
+}
+
+.hangman-svg {
+  width: 180px;
+  height: 180px;
+  color: #0A3161;
+}
+
+.hangman-tries {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0A3161;
+  margin: 0;
+}
+
+.hangman-hint {
+  font-size: 0.9rem;
+  color: #4a6fa5;
+  background: #eef3ff;
+  border-left: 3px solid #0A3161;
+  padding: 0.6rem 1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Palavra */
+.word-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.letter-box {
+  width: 36px;
+  height: 44px;
+  border-bottom: 3px solid #0A3161;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0A3161;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.letter-box.revealed {
+  color: #3b6d11;
+  border-color: #3b6d11;
+}
+
+.letter-box.missed {
+  color: #e24b4a;
+  border-color: #e24b4a;
+}
+
+/* Letras erradas */
+.wrong-letters {
+  font-size: 0.9rem;
+  color: #a32d2d;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wrong-letter {
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  background: #fcebeb;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid #f09595;
+}
+
+/* Teclado visual */
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  max-width: 500px;
+}
+
+.key-btn {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #0A3161;
+  border-radius: 8px;
+  background: #fff;
+  color: #0A3161;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  font-family: 'DM Mono', monospace;
+}
+
+.key-btn:hover:not(:disabled) {
+  background: #e8eef8;
+  transform: translateY(-2px);
+}
+
+.key-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.key-btn.correct {
+  background: #eaf3de;
+  border-color: #639922;
+  color: #3b6d11;
+}
+
+.key-btn.wrong {
+  background: #fcebeb;
+  border-color: #e24b4a;
+  color: #a32d2d;
+}
+
+/* Botão próxima */
+.next-btn {
+  padding: 0.75rem 2.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  background: #0A3161;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.next-btn:hover {
+  background: #0d3d7a;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .key-btn { width: 34px; height: 34px; font-size: 0.8rem; }
+  .letter-box { width: 30px; font-size: 1.1rem; }
+}
