@@ -1,0 +1,54 @@
+
+.midias-page {
+	width: min(100%, 1100px);
+	margin: 0 auto 2rem;
+	padding: 1.5rem;
+}
+
+.midias-card {
+	background: #f7f9ff;
+	border-radius: 20px;
+	padding: 2rem;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.midias-card h2 {
+	margin-bottom: 1rem;
+	color: #112e67;
+}
+
+.midias-card p {
+	margin-bottom: 1.5rem;
+	line-height: 1.8;
+	color: #324366;
+}
+
+.midias-list {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.midias-item {
+	background: #ffffff;
+	border-radius: 16px;
+	padding: 1rem;
+	border: 1px solid #d7e0f7;
+}
+
+.midias-item strong {
+	display: block;
+	margin-bottom: 0.5rem;
+	color: #102951;
+}
+
+.midias-item p {
+	margin: 0;
+	color: #3c4f78;
+}
+
+@media (max-width: 860px) {
+	.midias-list {
+		grid-template-columns: 1fr;
+	}
+}

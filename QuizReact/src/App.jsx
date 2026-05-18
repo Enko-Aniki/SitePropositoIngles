@@ -1,55 +1,49 @@
 import './App.css'
 
 // Components
-import Wellcome from "./components/Wellcome"
-import Questions from './components/Questions'
-import GameOver from './components/GameOver'
-import DragGame from './components/DragGame'
-import HangmanGame from './components/HangmanGame'
-import { PickLevel } from './components/PickLevel'
+import Header from './components/Header'
+import Home from './pages/Home'
+import Quiz from './pages/Quiz'
+import Midias from './pages/Midias'
+import Sobre from './pages/Sobre'
 
 // Context
-import { QuizContext } from "./context/quiz"
-import { DragContext } from "./context/Drag_N_Drop"
+import { QuizContext } from './context/quiz'
+import { DragContext } from './context/Drag_N_Drop'
 import { HangmanContext } from './context/hangman'
 
 // Hooks
-import { useContext } from "react"
+import { useState, useEffect, useContext } from 'react'
 
 function App() {
-  const { state: quizState } = useContext(QuizContext)
-  const { state: dragState } = useContext(DragContext)
-  const { state: hangmanState } = useContext(HangmanContext)
+  const [activePage, setActivePage] = useState('home')
+  const { dispatch: quizDispatch } = useContext(QuizContext)
+  const { dispatch: dragDispatch } = useContext(DragContext)
+  const { dispatch: hangmanDispatch } = useContext(HangmanContext)
+
+  useEffect(() => {
+    if (activePage !== 'quiz') {
+      quizDispatch({ type: 'NEW_GAME' })
+    }
+  }, [activePage, quizDispatch])
+
+  const handleNavigate = (page) => {
+    if (activePage === 'quiz' && page !== 'quiz') {
+      quizDispatch({ type: 'NEW_GAME' })
+      dragDispatch({ type: 'NEW_DRAG_GAME' })
+      hangmanDispatch({ type: 'NEW_HANGMAN' })
+    }
+    setActivePage(page)
+  }
 
   return (
     <div className="App">
-      <h1>Quiz de Inglês</h1>
+      <Header activePage={activePage} onNavigate={handleNavigate} />
 
-      {/* Tela inicial */}
-      {quizState.gameStage === "Start" && <Wellcome />}
-
-      {/* PickLevel aparece só quando nenhum jogo está ativo */}
-      {quizState.gameStage === "Pick" &&
-        dragState.gameStage === "Pick" &&
-        hangmanState.gameStage === "Pick" && (
-          <PickLevel />
-        )}
-
-      {/* Modo Quiz */}
-      {quizState.gameStage === "Playing" && <Questions />}
-      {quizState.gameStage === "End" && <GameOver />}
-
-      {/* Modo Drag and Drop */}
-      {dragState.gameStage === "Playing" && <DragGame />}
-      {dragState.gameStage === "End" && <GameOver />}
-
-      {/* Modo Forca */}
-      {(hangmanState.gameStage === "Playing" ||
-        hangmanState.gameStage === "Feedback") && (
-          <HangmanGame />
-        )}
-
-      {hangmanState.gameStage === "End" && <GameOver />}
+      {activePage === 'home' && <Home onStartQuiz={() => setActivePage('quiz')} />}
+      {activePage === 'quiz' && <Quiz />}
+      {activePage === 'conteudo' && <Midias />}
+      {activePage === 'sobre' && <Sobre />}
     </div>
   )
 }
