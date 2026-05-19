@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Quiz from './pages/Quiz'
 import Midias from './pages/Midias'
 import Sobre from './pages/Sobre'
+import Login from './pages/Login'
 
 // Context
 import { QuizContext } from './context/quiz'
@@ -44,6 +45,7 @@ function App() {
       {activePage === 'quiz' && <Quiz />}
       {activePage === 'conteudo' && <Midias />}
       {activePage === 'sobre' && <Sobre />}
+      {activePage === 'login' && <Login />}
     </div>
   )
 }

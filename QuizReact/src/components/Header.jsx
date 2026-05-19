@@ -6,6 +6,7 @@ const navItems = [
   { key: 'quiz', label: 'Quiz' },
   { key: 'conteudo', label: 'Conteúdo' },
   { key: 'sobre', label: 'Sobre nós' },
+  { key: 'login', label: 'Login' }
 ]
 
 export default function Header({ activePage, onNavigate }) {
