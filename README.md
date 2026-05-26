@@ -107,7 +107,7 @@ git checkout teste-paginas
 - [x] Jogo de Drag and Drop
 - [x] Jogo da Forca (Hangman)
 - [ ] Sistema de pontuação e progresso
-- [ ] Login e perfil do usuário
+- [x] Login e perfil do usuário
 - [ ] Mais categorias no hub de mídias
 - [ ] Versão mobile aprimorada
 - [ ] Deploy em produção
