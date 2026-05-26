@@ -34,6 +34,22 @@
 	border-radius: 16px;
 	padding: 1rem;
 	border: 1px solid #d7e0f7;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-align: left;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.midias-item:hover {
+	background: #f0f4ff;
+	border-color: #0033a0;
+	transform: translateY(-4px);
+	box-shadow: 0 8px 16px rgba(0, 51, 160, 0.1);
+}
+
+.midias-item:active {
+	transform: translateY(-2px);
 }
 
 .midias-item strong {

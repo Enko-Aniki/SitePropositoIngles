@@ -10,3 +10,9 @@
 .App h1 {
   margin-bottom: 2rem;
 }
+
+.App.loading {
+  min-height: 100vh;
+  font-size: 1.5rem;
+  color: #666;
+}

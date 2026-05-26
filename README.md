@@ -132,11 +132,12 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 
 ---
 
-## 👤 Autor
+## 👤 Autores
 
-Desenvolvido por **Enko-Aniki**
+Desenvolvido por **Enko-Aniki** e **AldrickScholarOfSorrow**
 
 [![GitHub](https://img.shields.io/badge/GitHub-Enko--Aniki-181717?style=flat&logo=github)](https://github.com/Enko-Aniki)
+[![GitHub](https://img.shields.io/badge/GitHub-AldrickScholarOfSorrow-181717?style=flat&logo=github)](https://github.com/AldrickScholarOfSorrow)
 
 ---
 

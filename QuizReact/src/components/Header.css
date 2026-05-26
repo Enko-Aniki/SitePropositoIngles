@@ -69,6 +69,24 @@
   .nav-buttons {
     justify-content: center;
   }
+
+  .header-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .header-logo {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-user-info {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
 }
 
 /* inner container centers content and keeps consistent width */
@@ -80,4 +98,38 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+/* User info and logout button */
+.header-user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.user-name {
+  color: #d8e6ff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background-color: #d72f2f;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.15s ease, transform 0.12s ease;
+}
+
+.logout-btn:hover {
+  background-color: #b01f1f;
+  transform: translateY(-1px);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
 }

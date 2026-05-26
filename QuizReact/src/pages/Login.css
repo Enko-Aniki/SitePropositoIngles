@@ -155,7 +155,39 @@
   transform: scale(0.98);
 }
 
-/* --- REGRAS DE RESPONSIVIDADE (MEDIA QUERIES) --- */
+/* Error message styling */
+.error-message {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background-color: #fee;
+  color: #c33;
+  border: 1px solid #fcc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Demo credentials */
+.demo-credentials {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-gray);
+}
+
+.demo-credentials p {
+  margin: 5px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.demo-credentials strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--dark-blue);
+}
 
 /* Ajustes para telas maiores (Computadores/Tablets) */
 @media (min-width: 768px) {

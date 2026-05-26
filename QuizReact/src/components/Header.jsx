@@ -1,15 +1,18 @@
 import './Header.css'
 import LogoImg from '../img/logo.jpeg'
+import { useContext } from 'react'
+import { AuthContext } from '../context/auth'
 
 const navItems = [
   { key: 'home', label: 'Início' },
   { key: 'quiz', label: 'Quiz' },
   { key: 'conteudo', label: 'Conteúdo' },
-  { key: 'sobre', label: 'Sobre nós' },
-  { key: 'login', label: 'Login' }
+  { key: 'sobre', label: 'Sobre nós' }
 ]
 
 export default function Header({ activePage, onNavigate }) {
+  const { user, logout } = useContext(AuthContext)
+
   return (
     <header className="header-nav">
       <div className="header-inner">
@@ -32,7 +35,23 @@ export default function Header({ activePage, onNavigate }) {
               {item.label}
             </button>
           ))}
+          {user?.role === 'admin' && (
+            <button
+              type="button"
+              className={activePage === 'admin' ? 'active' : ''}
+              onClick={() => onNavigate('admin')}
+            >
+              ⚙️ Admin
+            </button>
+          )}
         </nav>
+
+        <div className="header-user-info">
+          <span className="user-name">{user?.username}</span>
+          <button type="button" className="logout-btn" onClick={logout}>
+            Sair
+          </button>
+        </div>
       </div>
     </header>
   )
