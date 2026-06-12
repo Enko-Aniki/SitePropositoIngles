@@ -113,7 +113,7 @@
 }
 
 .word-chip.arranged:hover {
-  background: #f0f5ff;
+  background: #ffffff;
 }
 
 /* Dica */
@@ -159,7 +159,7 @@
 
 #drag-game button:disabled {
   background: #c5d3e8;
-  color: #8fa8cc;
+  color: #003b8e;
   cursor: not-allowed;
   box-shadow: none;
 }
@@ -213,11 +213,15 @@
 .feedback-box.correct .feedback-title { color: #e6e6e6; }
 .feedback-box.wrong  .feedback-title { color: #e4e4e4; }
 
+.feedback-box.correct .feedback-title { color: #ffffff; }
+.feedback-box.wrong  .feedback-title { color: #ffffff; }
+
 .feedback-label {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #e7e7e7;
+  color: #ffffff;
   margin: 0 0 0.5rem;
 }
 

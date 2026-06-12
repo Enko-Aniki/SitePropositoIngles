@@ -1,64 +1,245 @@
-.home-section {
-  width: min(100%, 1100px);
-  margin: 0 auto 2rem;
-  padding: 1rem 1.5rem;
+.wrapper {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Segoe UI", sans-serif;
+  color: #1a1a1a;
 }
 
-.home-card {
+/* HERO */
+
+.hero-section {
+  width: min(100%, 1100px);
+  margin: 0 auto 3rem;
+  padding: 2rem 1.5rem;
+}
+
+.hero-card {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.5rem;
   align-items: center;
   background: #f4f8ff;
   border-radius: 24px;
-  padding: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  padding: 3rem;
+  border: 1px solid #dce6ff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
 }
 
-.home-image-placeholder {
-  min-height: 260px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #dce6ff 0%, #ffffff 100%);
+.hero-img {
+  min-height: 280px;
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    #dce6ff 0%,
+    #ffffff 100%
+  );
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  color: #2f4f7b;
-  font-size: 1rem;
-  font-weight: 600;
-  border: 1px dashed #a7b8db;
+  align-items: center;
+  gap: .5rem;
 }
 
-.home-text-block h2 {
-  margin: 0 0 1rem;
-  font-size: 2rem;
+.hero-img-icon {
+  font-size: 3.5rem;
+}
+
+.hero-img-title {
+  font-size: 1.1rem;
+  font-weight: 600;
   color: #0f2b5d;
 }
 
-.home-text-block p {
-  margin: 0 0 1.5rem;
+.hero-img-sub {
+  color: #5a7bb5;
+}
+
+.badge {
+  display: inline-block;
+  background: #d91f1f;
+  color: white;
+  padding: .35rem 1rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 600;
+  margin-bottom: .9rem;
+}
+
+.hero-h2 {
+  font-size: 2.2rem;
+  color: #0f2b5d;
+  margin-bottom: .8rem;
+}
+
+.hero-p {
   line-height: 1.8;
   color: #2c436d;
-  max-width: 520px;
 }
 
-.home-quiz-button {
-  display: inline-block;
-  padding: 0.95rem 1.8rem;
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-red {
+  padding: .9rem 1.8rem;
   background: #d91f1f;
-  color: #fff;
+  color: white;
+  border: none;
   border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  transition: .25s;
 }
 
-.home-quiz-button:hover {
+.btn-red:hover {
   background: #b71c1c;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 860px) {
-  .home-card {
+.btn-out {
+  padding: .9rem 1.8rem;
+  background: transparent;
+  border: 2px solid #2f4f7b;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.btn-out:hover {
+  background: #f0f3fa;
+  transform: translateY(-2px);
+}
+
+.hero-note {
+  margin-top: .75rem;
+  color: #5a7bb5;
+  font-style: italic;
+}
+
+/* STATS */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.stat-item {
+  background: #f4f8ff;
+  border-radius: 16px;
+  padding: 1.75rem;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  color: #d91f1f;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.stat-label {
+  color: #2c436d;
+}
+
+/* WHO */
+
+.who-card {
+  background: #0f2b5d;
+  border-radius: 24px;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: white;
+}
+
+.who-h2 {
+  color: white;
+}
+
+.who-p {
+  color: #dce6ff;
+}
+
+.who-icon {
+  font-size: 6rem;
+  text-align: center;
+}
+
+/* BENEFITS */
+
+.section-h2 {
+  text-align: center;
+  color: #0f2b5d;
+  margin-bottom: 2rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.ben-card,
+.testi-card {
+  background: #f4f8ff;
+  padding: 1.75rem;
+  border-radius: 16px;
+}
+
+.ben-icon {
+  font-size: 2rem;
+}
+
+/* TESTIMONIALS */
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.testi-card {
+  border-left: 4px solid #d91f1f;
+}
+
+.testi-name {
+  color: #d91f1f;
+  font-weight: bold;
+}
+
+/* FINAL CTA */
+
+.final-card {
+  background: linear-gradient(
+    135deg,
+    #0f2b5d,
+    #1a3f7a
+  );
+  padding: 3rem;
+  border-radius: 24px;
+  text-align: center;
+  color: white;
+}
+
+/* FOOTER */
+
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #5a7bb5;
+  border-top: 1px solid #dce6ff;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 900px) {
+  .hero-card,
+  .who-card,
+  .benefits-grid,
+  .stats-grid,
+  .testi-grid {
     grid-template-columns: 1fr;
   }
 }

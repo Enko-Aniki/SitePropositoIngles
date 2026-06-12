@@ -19,6 +19,7 @@ import { AuthContext } from './context/auth'
 
 // Hooks
 import { useState, useEffect, useContext } from 'react'
+import Footer from './components/Footer'
 
 function App() {
   const [activePage, setActivePage] = useState('home')
@@ -67,7 +68,11 @@ function App() {
       {activePage === 'musicas' && <Musicas />}
       {activePage === 'sobre' && <Sobre />}
       {activePage === 'admin' && <Admin />}
+
+      <Footer />
     </div>
+
+
   )
 }
 

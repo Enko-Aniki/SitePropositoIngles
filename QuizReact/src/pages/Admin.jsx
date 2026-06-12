@@ -20,23 +20,23 @@ export default function Admin() {
   // Form states
   const [formData, setFormData] = useState(getInitialFormData());
 
-  function getInitialFormData() {
-    if (gameType === 'quiz') {
-      return { question: '', options: ['', '', '', ''], answer: '', tip: '' };
-    } else if (gameType === 'drag') {
-      return { sentence: '', tip: '' };
-    } else {
-      return { word: '', hint: '' };
-    }
+  function getInitialFormData(type = gameType) {
+  if (type === 'quiz') {
+    return { question: '', options: ['', '', '', ''], answer: '', tip: '' };
+  } else if (type === 'drag') {
+    return { sentence: '', tip: '' };
+  } else {
+    return { word: '', hint: '' };
   }
+}
 
-  const handleGameTypeChange = (type) => {
-    setGameType(type);
-    setSelectedCategory(0);
-    setEditingIndex(null);
-    setShowForm(false);
-    setFormData(getInitialFormData());
-  };
+const handleGameTypeChange = (type) => {
+  setGameType(type);
+  setSelectedCategory(0);
+  setEditingIndex(null);
+  setShowForm(false);
+  setFormData(getInitialFormData(type)); // <-- passa o tipo novo
+};
 
   const handleCategoryChange = (index) => {
     setSelectedCategory(index);
