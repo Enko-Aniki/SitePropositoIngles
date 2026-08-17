@@ -1,0 +1,222 @@
+/* Reset básico e fontes */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --primary-red: #ff0000;
+  --dark-blue: #0033a0;
+  --text-gray: #7a7a7a;
+  --input-border: #4a4a4a;
+}
+
+/* Container principal ocupando a tela toda */
+.login-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Efeito das listras vermelhas no topo esquerdo usando gradiente */
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--primary-red),
+    var(--primary-red) 20px,
+    #ffffff 20px,
+    #ffffff 40px
+  );
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  z-index: 1;
+}
+
+/* Card de login que centraliza o conteúdo */
+.login-card {
+  width: 100%;
+  max-width: 400px; /* Limita a largura em telas grandes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2; /* Garante que fique acima do background */
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Cabeçalho */
+.login-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.login-header h1 {
+  font-size: 3.5rem;
+  color: var(--dark-blue);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.login-header p {
+  font-size: 1.5rem;
+  color: var(--text-gray);
+  font-weight: 300;
+}
+
+/* Formulário e Inputs */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-gray);
+  border: 1.5px solid var(--input-border);
+  border-radius: 15px;
+  outline: none;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--dark-blue);
+}
+
+/* Botão do Google */
+.social-login {
+  margin: 20px 0 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.google-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.google-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão Acessar */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--primary-red);
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background-color: #d60000;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Error message styling */
+.error-message {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background-color: #fee;
+  color: #c33;
+  border: 1px solid #fcc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Demo credentials */
+.demo-credentials {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-gray);
+}
+
+.demo-credentials p {
+  margin: 5px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.demo-credentials strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--dark-blue);
+}
+
+/* Ajustes para telas maiores (Computadores/Tablets) */
+@media (min-width: 768px) {
+  .login-container {
+    background-color: #f4f6f9; /* Um fundo levemente cinza no PC destaca o card de login */
+  }
+
+  .login-card {
+    background: #ffffff;
+    padding: 50px 40px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05); /* Envolve o form num card elegante no PC */
+    border-radius: 16px;
+  }
+  
+  .login-container::before {
+    width: 350px;
+    height: 350px; /* Aumenta o detalhe das listras em telas maiores */
+  }
+}
+
+/* Ajustes para telas muito pequenas (Celulares antigos ou compactos) */
+@media (max-height: 700px) {
+  .login-header {
+    margin-bottom: 20px;
+  }
+  .social-login {
+    margin: 15px 0 25px 0;
+  }
+  .input-group {
+    margin-bottom: 15px;
+  }
+}

@@ -68,21 +68,22 @@ const quizReducer = (state, action) => {
     }
 
     case "SELECT_OPTION": {
-  // Se o usuário já clicou em uma opção, travamos para não ganhar pontos extras
   if (state.answerSelected) return state;
 
-  const answer = action.payload.answer;
-  const option = action.payload.option;
-  let correct = 0;
+  const option = action.payload.option; // O componente só precisa enviar a opção escolhida
+  
+  // Pegamos a questão atual diretamente do state do reducer
+  const currentQuestion = state.questions[state.currentQuestion];
+  const answer = currentQuestion.answer; // Resposta correta vinda da sua base de dados
 
-  // Comparação real entre a resposta certa e a escolhida
+  let correct = 0;
   if (option === answer) correct = 100;
 
   return {
     ...state,
     score: state.score + correct,
-    answerSelected: true, // Indica que a pergunta foi respondida
-    selectedOption: option, // Salva qual foi a escolha para o CSS
+    answerSelected: true,
+    selectedOption: option,
   };
 }
     

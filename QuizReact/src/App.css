@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  padding-top: 3rem;
+  padding-top: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,4 +9,10 @@
 
 .App h1 {
   margin-bottom: 2rem;
+}
+
+.App.loading {
+  min-height: 100vh;
+  font-size: 1.5rem;
+  color: #666;
 }
