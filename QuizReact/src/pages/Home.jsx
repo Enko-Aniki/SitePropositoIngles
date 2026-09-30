@@ -1,4 +1,4 @@
-import "./LandingPageIngles.css";
+import "./Home.css";
 
 const benefits = [
   {
