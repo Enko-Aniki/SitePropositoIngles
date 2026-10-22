@@ -1,4 +1,6 @@
-/* Header.css - Versão Final */
+/* ==========================================================================
+   Header.css - Versão Final Otimizada para Mobile
+   ========================================================================== */
 
 .header-nav {
   width: 100vw;
@@ -147,144 +149,67 @@
   transform: translateY(0);
 }
 
-/* Versículo Bíblico - EXPANSÍVEL */
-.versiculo-biblico {
-  background-color: #0b3b8f;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
 
-.versiculo-biblico.versiculo-visible {
-  max-height: 400px;
-}
 
-.versiculo-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 1.2rem;
-  position: relative;
-}
 
-.versiculo-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 1.2rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
+/* ==========================================================================
+   Responsividade Ajustada (Mobile First / Reduções de Cabeçalho)
+   ========================================================================== */
 
-.versiculo-close:hover {
-  background: #d72f2f;
-  border-color: #d72f2f;
-  transform: rotate(90deg);
-}
-
-/* Grid do versículo */
-.versiculo-grid {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  align-items: start;
-}
-
-.versiculo-card {
-  padding: 1rem;
-}
-
-.versiculo-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.versiculo-badge {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffd700;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-.versiculo-ref {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.75rem;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.versiculo-texto {
-  color: #ffffff;
-  font-size: 0.95rem;
-  line-height: 1.8;
-  margin: 0;
-  font-style: italic;
-  font-weight: 400;
-  quotes: "“" "”" "‘" "’";
-  border-left: 3px solid rgba(255, 215, 0, 0.3);
-  padding-left: 1rem;
-}
-
-.versiculo-divider-vertical {
-  width: 1px;
-  min-height: 100px;
-  background: linear-gradient(
-    180deg, 
-    transparent 0%, 
-    rgba(255, 255, 255, 0.2) 50%, 
-    transparent 100%
-  );
-}
-
-/* Responsividade */
 @media (max-width: 720px) {
+  /* Reduz o espaçamento interno total do cabeçalho */
   .header-inner {
-    flex-wrap: wrap;
-    justify-content: center;
+    padding: 0.5rem 0.8rem;
+    gap: 0.5rem;
   }
 
+  /* Reduz o tamanho da imagem do logo */
+  .header-logo-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+  }
+
+  /* Diminui e remove margem dos textos do logo */
+  .header-logo strong {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  .header-logo span {
+    font-size: 0.75rem;
+  }
+
+  /* Compacta o container e os botões de navegação */
   .nav-buttons {
-    justify-content: center;
-    width: 100%;
-    order: 2;
+    gap: 0.4rem;
   }
 
   .nav-buttons button {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.5rem;
   }
 
-  .header-logo {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-    order: 1;
+  .versiculo-nav-btn {
+    font-size: 1rem !important;
+    padding: 0.35rem 0.4rem !important;
   }
 
+  /* Diminui a área do usuário e o botão de logout */
   .header-user-info {
-    margin-left: 0;
-    width: 100%;
-    justify-content: center;
-    margin-top: 0.5rem;
-    order: 3;
+    gap: 0.5rem;
   }
 
+  .user-name {
+    font-size: 0.85rem;
+  }
+
+  .logout-btn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  /* Layout do painel do versículo para coluna única */
   .versiculo-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -313,17 +238,26 @@
 }
 
 @media (max-width: 480px) {
+  /* Mantém flexibilidade sem quebrar linhas indesejadas em telas muito finas */
   .header-inner {
-    padding: 0.8rem 0.8rem;
+    padding: 0.4rem 0.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  .nav-buttons {
-    gap: 0.4rem;
+  /* Esconde detalhes textuais para poupar espaço precioso */
+  .header-logo span {
+    display: none;
   }
 
   .nav-buttons button {
     font-size: 0.8rem;
-    padding: 0.35rem 0.5rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  /* Oculta o nome no mobile extremo (fica apenas o botão de logout vermelho) */
+  .user-name {
+    display: none;
   }
 
   .versiculo-inner {
@@ -335,7 +269,20 @@
   }
 }
 
-/* Compensação do header fixo */
-body {
-  padding-top: 80px;
+/* ==========================================================================
+   Compensação Inteligente da Altura do Body (Evita buracos brancos)
+   ========================================================================== */
+
+/* Telas menores (Mobile) - O header ficou mais baixo */
+@media (max-width: 720px) {
+  body {
+    padding-top: 56px; 
+  }
+}
+
+/* Telas maiores (Desktop) - Mantém a distância original */
+@media (min-width: 721px) {
+  body {
+    padding-top: 80px;
+  }
 }

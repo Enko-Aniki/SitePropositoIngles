@@ -78,36 +78,36 @@ export default function LandingPageIngles({ onInscrever }) {
               Iniciativa da Igreja Batista
             </span>
           </div>
+      <div>
+  <h2 className="hero-h2">Curso de Inglês Batista</h2>
 
-          <div>
-            <span className="badge">
-              Vagas limitadas — sem custo algum
-            </span>
+  <div className="versiculo-grid">
+    <div className="versiculo-card">
+      <div className="versiculo-header">
+        <span className="versiculo-badge">🇧🇷 Português</span>
+        <span className="versiculo-ref">João 3:16 NVI</span>
+      </div>
+      <blockquote className="versiculo-texto">
+        "Porque Deus tanto amou o mundo que deu o seu Filho Unigênito,
+        para que todo aquele que nele crer não pereça, mas tenha a vida eterna."
+      </blockquote>
+    </div>
 
-            <h2 className="hero-h2">Curso de Inglês Batista</h2>
+    <div className="versiculo-divider-vertical"></div>
 
-            <p className="hero-p">
-              Aprenda inglês com propósito. Um projeto social da nossa igreja
-              para transformar vidas por meio do ensino gratuito de idiomas.
-            </p>
-
-            <div className="cta-group">
-              <button
-                className="btn-red"
-                onClick={onInscrever}
-              >
-                Quero me inscrever
-              </button>
-
-              <button className="btn-out">
-                Saiba mais
-              </button>
-            </div>
-
-            <p className="hero-note">
-              * Aberto à comunidade — não é necessário ser membro da igreja
-            </p>
-          </div>
+    <div className="versiculo-card">
+      <div className="versiculo-header">
+        <span className="versiculo-badge">🇺🇸 English</span>
+        <span className="versiculo-ref">John 3:16 NIV</span>
+      </div>
+      <blockquote className="versiculo-texto">
+        "For God so loved the world that he gave his one and only Son,
+        that whoever believes in him shall not perish but have eternal life."
+      </blockquote>
+    </div>
+  </div>
+</div>
+         
         </div>
       </section>
 

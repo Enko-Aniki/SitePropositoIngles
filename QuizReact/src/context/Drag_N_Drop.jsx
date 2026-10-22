@@ -25,7 +25,7 @@ const initialState = {
 const dragReducer = (state, action) => {
   switch (action.type) {
 
-    case "START_DRAG_GAME": {         // 👈 era "START_GAME"
+    case "START_DRAG_GAME": {        
       const randomQuestions = getRandomQuestions(action.payload, 5).map((q) => ({  
         ...q,
         shuffledWords: shuffleWords(q.sentence),

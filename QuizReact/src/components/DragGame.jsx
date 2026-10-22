@@ -64,16 +64,31 @@ const DragGame = () => {
     setDragOverIndex(null)
   }
 
+  // 👇 NOVAS FUNÇÕES DE CLIQUE PARA CELULAR / TOQUE
+  const handleWordClickFromAvailable = (index) => {
+    if (feedback) return
+    const word = available[index]
+    setAvailable((prev) => prev.filter((_, i) => i !== index))
+    setArranged((prev) => [...prev, word])
+  }
+
+  const handleWordClickFromArranged = (index) => {
+    if (feedback) return
+    const word = arranged[index]
+    setArranged((prev) => prev.filter((_, i) => i !== index))
+    setAvailable((prev) => [...prev, word])
+  }
+
   const handleConfirm = () => {
     const isCorrect =
-      arranged.join(" ").toLowerCase() ===  // 👈 corrigido
+      arranged.join(" ").toLowerCase() ===
       currentQuestion.correctOrder.join(" ").toLowerCase()
 
-    setFeedback(isCorrect ? "correct" : "wrong")  // 👈 corrigido: "correct"/"wrong" para bater com o CSS
+    setFeedback(isCorrect ? "correct" : "wrong")
   }
 
   const handleNext = () => {
-    dispatch({ type: "CHECK_ANSWER", payload: arranged })  // 👈 corrigido o typo
+    dispatch({ type: "CHECK_ANSWER", payload: arranged })
     const next = state.questions[state.currentQuestion + 1]
     if (next) {
       setArranged([])
@@ -89,7 +104,7 @@ const DragGame = () => {
     setFeedback(null)
   }
 
-  return (  // 👈 return agora dentro da função corretamente
+  return (
     <div id="drag-game">
       <p>Pergunta {state.currentQuestion + 1} de {state.questions.length}</p>
       <h2>Monte a frase correta:</h2>
@@ -100,7 +115,7 @@ const DragGame = () => {
         onDrop={(e) => !feedback && handleDropOnArranged(e)}
       >
         {arranged.length === 0 && (
-          <span className="placeholder">Arraste as palavras aqui</span>
+          <span className="placeholder">Arraste ou clique nas palavras aqui</span>
         )}
         {arranged.map((word, index) => (
           <span
@@ -118,6 +133,7 @@ const DragGame = () => {
               e.stopPropagation()
               !feedback && handleDropOnChip(index)
             }}
+            onClick={() => handleWordClickFromArranged(index)} // 👈 Adicionado clique para voltar
           >
             {word}
           </span>
@@ -136,6 +152,7 @@ const DragGame = () => {
               className="word-chip"
               draggable
               onDragStart={() => handleDragStart("available", index)}
+              onClick={() => handleWordClickFromAvailable(index)} // 👈 Adicionado clique para ir
             >
               {word}
             </span>
@@ -196,4 +213,4 @@ const DragGame = () => {
   )
 }
 
-export default DragGame
+export default DragGame   
