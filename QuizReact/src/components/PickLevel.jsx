@@ -2,24 +2,42 @@ import { useContext } from "react"
 import { QuizContext } from '../context/quiz'
 import { DragContext } from "../context/Drag_N_Drop";
 import { HangmanContext } from "../context/hangman";
+import { AuthContext } from '../context/auth';
 import "./PickLevel.css";
 
 export const PickLevel = () => {
   const { state: quizState, dispatch: quizDispatch } = useContext(QuizContext)
   const { state: dragState, dispatch: dragDispatch } = useContext(DragContext)
-  const { state: hangmanState, dispatch: hangmanDispatch } = useContext(HangmanContext)  // 👈 novo
+  const { state: hangmanState, dispatch: hangmanDispatch } = useContext(HangmanContext)
+  const { getQuizAvailabilityInfo } = useContext(AuthContext)
+  const quizAvailability = getQuizAvailabilityInfo()
+
+  const handleQuizStart = (questions) => {
+    if (!quizAvailability.canPlay) return
+    quizDispatch({ type: "START_GAME", payload: questions })
+  }
 
   return (
     <div id="category">
       <h2>ESCOLHA SEU NIVEL DE INGLÊS</h2>
       <p>Escolha o nível e o modo de jogo</p>
 
+      {!quizAvailability.canPlay && (
+        <div className="quiz-limit-warning">
+          Você já completou 3 quizzes nas últimas 24 horas. Próxima oportunidade em {Math.ceil((quizAvailability.nextAvailableInMs || 0) / (60 * 60 * 1000))} hora(s).
+        </div>
+      )}
+
       <div id="mode-container">
         <div className="mode-box">
           <h3>🎯 Múltipla Escolha</h3>
           <p className="mode-desc">Escolha a alternativa correta</p>
           {quizState.categories.map((category) => (
-            <button onClick={() => quizDispatch({ type: "START_GAME", payload: category.questions })} key={category.category}>
+            <button
+              onClick={() => handleQuizStart(category.questions)}
+              key={category.category}
+              disabled={!quizAvailability.canPlay}
+            >
               {category.category}
             </button>
           ))}
@@ -39,7 +57,6 @@ export const PickLevel = () => {
 
         <div className="divider" />
 
-        {/* 👇 novo bloco */}
         <div className="mode-box">
           <h3>💀 Forca</h3>
           <p className="mode-desc">Descubra a palavra letra por letra</p>

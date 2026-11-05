@@ -5,14 +5,15 @@ import { AuthContext } from '../context/auth'
 
 const navItems = [
   { key: 'home', label: 'Início' },
+  { key: 'perfil', label: 'Perfil' },
   { key: 'quiz', label: 'Quiz' },
   { key: 'conteudo', label: 'Conteúdo' },
   { key: 'sobre', label: 'Sobre nós' }
+  
 ]
 
 export default function Header({ activePage, onNavigate }) {
   const { user, logout } = useContext(AuthContext)
-  const [showVersiculo, setShowVersiculo] = useState(false)
 
   return (
     <header className="header-nav">

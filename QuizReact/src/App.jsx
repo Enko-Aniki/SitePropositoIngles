@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import Admin from './pages/Admin'
 import Livros from './pages/Livros'
 import Musicas from './pages/Musicas'
+import Perfil from './pages/Perfil'
 
 // Context
 import { QuizContext } from './context/quiz'
@@ -67,6 +68,7 @@ function App() {
       {activePage === 'livros' && <Livros />}
       {activePage === 'musicas' && <Musicas />}
       {activePage === 'sobre' && <Sobre />}
+      {activePage === 'perfil' && <Perfil />}
       {activePage === 'admin' && <Admin />}
 
       <Footer />

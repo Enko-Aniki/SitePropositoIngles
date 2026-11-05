@@ -1,0 +1,207 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 28px 20px;
+    background: radial-gradient(circle at top, #eef4ff 0%, #f5f7fb 35%, #eef2ff 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cartão do perfil */
+.profile-card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 28px;
+    box-shadow: 0 18px 45px rgba(79, 70, 229, 0.14);
+    width: min(100%, 420px);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.profile-header {
+    position: relative;
+    padding: 30px 24px 18px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    text-align: center;
+}
+
+/* Foto do usuário (Avatar) */
+.profile-avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 12px 25px rgba(15, 23, 42, 0.2);
+    background: #fff;
+}
+
+/* Botão de mudar avatar */
+.avatar-change-btn {
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.avatar-change-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* Seletor de avatar */
+.avatar-picker {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(48px, 1fr));
+    gap: 10px;
+    padding: 12px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+}
+
+.avatar-option {
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.avatar-option:hover {
+    transform: scale(1.06);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.avatar-option img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-body {
+    padding: 22px 24px 28px;
+    text-align: center;
+}
+
+/* Distintivo de perfil */
+.profile-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Nome do usuário */
+.profile-name {
+    margin: 14px 0 8px;
+    font-size: 1.8rem;
+    color: #111827;
+    font-weight: 800;
+}
+
+/* Email */
+.profile-email {
+    margin: 0 0 20px;
+    color: #64748b;
+    font-size: 0.96rem;
+}
+
+/* Bloco de pontuação do jogo */
+.profile-score-box {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    border-radius: 20px;
+    padding: 18px 16px;
+    margin-bottom: 20px;
+}
+
+.score-label {
+    display: block;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #065f46;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.score-value {
+    font-size: 2rem;
+    color: #047857;
+}
+
+/* Estatísticas do perfil */
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.stat-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #475569;
+    font-size: 0.8rem;
+ }
+
+.stat-item strong {
+    font-size: 1.3rem;
+    color: #1f2937;
+}
+
+/* Perfil bloqueado */
+.profile-lock {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a5b00;
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    .profile-card {
+        border-radius: 18px;
+    }
+
+    .profile-body {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .profile-stats {
+        grid-template-columns: 1fr;
+    }
+}
