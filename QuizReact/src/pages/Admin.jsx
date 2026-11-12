@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import './Admin.css';
 import { AuthContext } from '../context/auth';
 import { QuestionsContext } from '../context/questions';
+import { createUserAccount, getRegisteredUsers } from '../data/admlogin';
 
 export default function Admin() {
   const { user } = useContext(AuthContext);
@@ -16,6 +17,24 @@ export default function Admin() {
   const [editingIndex, setEditingIndex] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [activeSection, setActiveSection] = useState('content');
+  const [initialRegisteredUserState] = useState(() => {
+    try {
+      return {
+        users: getRegisteredUsers().map(({ id, username, role }) => ({ id, username, role })),
+        error: '',
+      };
+    } catch (error) {
+      console.error('Error loading registered users:', error);
+      return {
+        users: [],
+        error: 'Não foi possível carregar as contas cadastradas.',
+      };
+    }
+  });
+  const [registeredUsers, setRegisteredUsers] = useState(initialRegisteredUserState.users);
+  const [userFormData, setUserFormData] = useState({ username: '', password: '', confirmPassword: '' });
+  const [userError, setUserError] = useState(initialRegisteredUserState.error);
 
   // Form states
   const [formData, setFormData] = useState(getInitialFormData());
@@ -164,6 +183,26 @@ const handleGameTypeChange = (type) => {
     setTimeout(() => setSuccessMessage(''), 3000);
   };
 
+  const handleCreateUser = (e) => {
+    e.preventDefault();
+    setUserError('');
+
+    if (userFormData.password !== userFormData.confirmPassword) {
+      setUserError('As senhas não coincidem.');
+      return;
+    }
+
+    try {
+      const newUser = createUserAccount(userFormData.username, userFormData.password);
+      setRegisteredUsers((currentUsers) => [...currentUsers, newUser]);
+      setUserFormData({ username: '', password: '', confirmPassword: '' });
+      showSuccess('Conta criada com sucesso!');
+    } catch (error) {
+      console.error('Error creating user account:', error);
+      setUserError(error instanceof Error ? error.message : 'Não foi possível criar a conta.');
+    }
+  };
+
   const currentData = gameType === 'quiz' ? quizData :
                      gameType === 'drag' ? dragData : hangmanData;
   const currentCategory = currentData[selectedCategory];
@@ -182,11 +221,30 @@ const handleGameTypeChange = (type) => {
         <>
           <div className="admin-header">
             <h1>Painel de Administração</h1>
-            <p>Gerenciar Perguntas e Conteúdos</p>
+            <p>Gerenciar usuários, perguntas e conteúdos</p>
           </div>
 
           {successMessage && <div className="success-message">{successMessage}</div>}
 
+          <div className="game-selector admin-section-selector">
+            <button
+              type="button"
+              className={`game-btn ${activeSection === 'content' ? 'active' : ''}`}
+              onClick={() => setActiveSection('content')}
+            >
+              Gerenciar conteúdo
+            </button>
+            <button
+              type="button"
+              className={`game-btn ${activeSection === 'users' ? 'active' : ''}`}
+              onClick={() => setActiveSection('users')}
+            >
+              Usuários
+            </button>
+          </div>
+
+          {activeSection === 'content' && (
+            <>
           {/* Game Type Selector */}
           <div className="game-selector">
             <button
@@ -423,6 +481,75 @@ const handleGameTypeChange = (type) => {
               </div>
             )}
           </div>
+            </>
+          )}
+
+          {activeSection === 'users' && (
+            <section className="user-management">
+              <form className="admin-form" onSubmit={handleCreateUser}>
+                <h2 className="form-title">Criar conta de usuário</h2>
+                <div className="form-group">
+                  <label htmlFor="new-username">Nome de usuário *</label>
+                  <input
+                    id="new-username"
+                    type="text"
+                    autoComplete="off"
+                    value={userFormData.username}
+                    onChange={(e) => setUserFormData({ ...userFormData, username: e.target.value })}
+                    placeholder="Digite um nome de usuário"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="new-password">Senha *</label>
+                  <input
+                    id="new-password"
+                    type="password"
+                    autoComplete="new-password"
+                    value={userFormData.password}
+                    onChange={(e) => setUserFormData({ ...userFormData, password: e.target.value })}
+                    placeholder="Crie uma senha"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="confirm-password">Confirmar senha *</label>
+                  <input
+                    id="confirm-password"
+                    type="password"
+                    autoComplete="new-password"
+                    value={userFormData.confirmPassword}
+                    onChange={(e) => setUserFormData({ ...userFormData, confirmPassword: e.target.value })}
+                    placeholder="Digite a senha novamente"
+                    required
+                  />
+                </div>
+                {userError && <p className="admin-error-message" role="alert">{userError}</p>}
+                <div className="form-buttons">
+                  <button type="submit" className="submit-btn">Criar usuário</button>
+                </div>
+              </form>
+
+              <div className="items-list">
+                <h3>Contas criadas ({registeredUsers.length})</h3>
+                {registeredUsers.length === 0 ? (
+                  <p className="empty-users-message">Ainda não há contas criadas pelo administrador.</p>
+                ) : (
+                  <div className="users-list">
+                    {registeredUsers.map((registeredUser) => (
+                      <div className="user-card" key={registeredUser.id}>
+                        <strong>{registeredUser.username}</strong>
+                        <span>Usuário</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <p className="storage-notice">
+                As contas ficam salvas neste navegador. Para produção, será necessário armazená-las em um servidor.
+              </p>
+            </section>
+          )}
         </>
       )}
     </div>

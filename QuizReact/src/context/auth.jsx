@@ -6,6 +6,7 @@ import avatarD from '../img/usuariofotoD.jpg';
 import avatarE from '../img/usuariofotoE.jpg';
 import avatarF from '../img/usuariofotoF.jpg';
 import avatarG from '../img/usuariofotoG.jpg';
+import { persistRegisteredUserProfile } from '../data/admlogin';
 
 export const profileAvatarOptions = [
   { id: 'A', src: avatarA },
@@ -73,6 +74,7 @@ export function AuthProvider({ children }) {
     setIsAuthenticated(true);
     if (normalizedUser) {
       localStorage.setItem('user', JSON.stringify(normalizedUser));
+      persistRegisteredUserProfile(normalizedUser);
     }
     return normalizedUser;
   }, []);
@@ -102,6 +104,7 @@ export function AuthProvider({ children }) {
 
       if (nextUser) {
         localStorage.setItem('user', JSON.stringify(nextUser));
+        persistRegisteredUserProfile(nextUser);
       }
 
       return nextUser;
@@ -167,6 +170,7 @@ export function AuthProvider({ children }) {
       };
 
       localStorage.setItem('user', JSON.stringify(nextUser));
+      persistRegisteredUserProfile(nextUser);
       return nextUser;
     });
   }, [user]);

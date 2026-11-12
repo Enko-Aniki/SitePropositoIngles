@@ -17,16 +17,22 @@ export default function Login() {
 
         // Simulate API call delay
         setTimeout(() => {
-            const user = authenticateUser(emailOrUsername, password);
-            
-            if (user) {
-                login(user);
-                // Parent component (App) will handle page redirect
-            } else {
-                setError('Email/Usuário ou Senha incorretos');
-                setPassword('');
+            try {
+                const user = authenticateUser(emailOrUsername, password);
+
+                if (user) {
+                    login(user);
+                    // Parent component (App) will handle page redirect
+                } else {
+                    setError('Email/Usuário ou Senha incorretos');
+                    setPassword('');
+                }
+            } catch (error) {
+                console.error('Error authenticating user:', error);
+                setError('Não foi possível carregar as contas. Tente novamente.');
+            } finally {
+                setIsLoading(false);
             }
-            setIsLoading(false);
         }, 500);
     };
 
@@ -44,7 +50,7 @@ export default function Login() {
                     <div className="input-group">
                         <input
                             type="text"
-                            placeholder="email ou usuario"
+                            placeholder="email ou usuário"
                             value={emailOrUsername}
                             onChange={(e) => setEmailOrUsername(e.target.value)}
                             required
@@ -72,6 +78,7 @@ export default function Login() {
                     <p><strong>Contas de Demonstração:</strong></p>
                     <p>👤 admin@email.com / admin123</p>
                     <p>👤 user@email.com / user123</p>
+                    <p>Contas criadas pelo administrador: use o nome de usuário e a senha cadastrados.</p>
                 </div>
             </div>
         </div>

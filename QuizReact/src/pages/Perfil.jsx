@@ -50,7 +50,11 @@ export default function Perfil() {
         <div className="profile-body">
           <span className="profile-badge">Usuário</span>
           <h2 className="profile-name">{user?.username || 'Nome Perfil'}</h2>
-          <p className="profile-email">{user?.email || 'email@exemplo.com'}</p>
+          {user?.email ? (
+            <p className="profile-email">{user.email}</p>
+          ) : (
+            <p className="profile-email">Conta criada pelo administrador</p>
+          )}
 
           <div className="profile-score-box">
             <span className="score-label">Pontuação total</span>

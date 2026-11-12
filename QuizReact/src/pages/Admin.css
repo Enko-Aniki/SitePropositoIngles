@@ -99,6 +99,57 @@
   border-color: #0033a0;
 }
 
+.admin-section-selector {
+  margin-bottom: 1.5rem;
+}
+
+.user-management {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.admin-error-message {
+  color: #b42318;
+  background-color: #fef3f2;
+  border: 1px solid #fecdca;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.users-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  background-color: white;
+  border-left: 4px solid #0033a0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow-wrap: anywhere;
+}
+
+.user-card strong {
+  color: #0033a0;
+}
+
+.user-card span,
+.empty-users-message,
+.storage-notice {
+  color: #666;
+}
+
+.storage-notice {
+  margin: 1rem 0 2rem;
+  font-size: 0.9rem;
+}
+
 /* Category Selector */
 .category-selector {
   display: flex;
