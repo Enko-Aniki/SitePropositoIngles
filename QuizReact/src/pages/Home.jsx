@@ -1,201 +1,119 @@
-import "./Home.css";
+import { useContext } from 'react';
+import { AuthContext } from '../context/auth';
+import './Home.css';
 
-const benefits = [
+const shortcuts = [
   {
-    icon: "🆓",
-    title: "Totalmente gratuito",
+    key: 'quiz',
+    icon: '🎮',
+    eyebrow: 'Aprenda jogando',
+    title: 'Jogos',
     description:
-      "Sem taxas, sem mensalidades. O curso é um serviço à comunidade financiado pela igreja.",
+      'Pratique inglês com quiz, desafios de palavras e jogo da forca.',
+    action: 'Explorar jogos',
   },
   {
-    icon: "👥",
-    title: "Turmas reduzidas",
+    key: 'perfil',
+    icon: '👤',
+    eyebrow: 'Acompanhe seu progresso',
+    title: 'Meu perfil',
     description:
-      "Grupos pequenos para garantir atenção individual e um aprendizado mais efetivo.",
+      'Confira sua pontuação, seus jogos concluídos e personalize seu perfil.',
+    action: 'Acessar perfil',
   },
   {
-    icon: "⏰",
-    title: "Horários acessíveis",
+    key: 'conteudo',
+    icon: '📚',
+    eyebrow: 'Continue aprendendo',
+    title: 'Conteúdo',
     description:
-      "Aulas no período noturno e aos sábados para quem trabalha durante o dia.",
-  },
-  {
-    icon: "📚",
-    title: "Material incluso",
-    description:
-      "Apostilas e materiais didáticos fornecidos sem custo algum para o aluno.",
-  },
-  {
-    icon: "🎓",
-    title: "Certificado ao final",
-    description:
-      "Certificado de conclusão emitido para alunos que completam o curso.",
-  },
-  {
-    icon: "❤️",
-    title: "Ambiente acolhedor",
-    description:
-      "Um espaço seguro, respeitoso e encorajador para todos os níveis de aprendizado.",
+      'Encontre materiais de apoio, livros e vídeos para estudar no seu ritmo.',
+    action: 'Ver conteúdos',
   },
 ];
 
-const testimonials = [
-  {
-    text: "Nunca imaginei que aprenderia inglês. O projeto mudou minha perspectiva profissional e pessoal. Os professores são incríveis!",
-    name: "Maria Fernanda, moradora do bairro",
-  },
-  {
-    text: "Consegui uma promoção no trabalho graças ao certificado do curso. E tudo de graça!",
-    name: "João Paulo, ex-aluno",
-  },
-  {
-    text: "Minha filha de 15 anos participa das turmas e está evoluindo muito.",
-    name: "Rosângela, mãe de aluna",
-  },
-  {
-    text: "Vim sem esperança de aprender e hoje consigo me comunicar em inglês básico.",
-    name: "Sebastião, aposentado",
-  },
-];
+export default function Home({ onNavigate }) {
+  const { user } = useContext(AuthContext);
 
-const stats = [
-  { number: "+300", label: "Alunos atendidos" },
-  { number: "100%", label: "Gratuito" },
-  { number: "2 anos", label: "De projeto social" },
-];
-
-export default function LandingPageIngles({ onInscrever }) {
   return (
-    <div className="wrapper">
-      <section className="hero-section">
-        <div className="hero-card">
-          <div className="hero-img">
-            <span className="hero-img-icon">🌍</span>
-            <span className="hero-img-title">
-              Inglês gratuito para todos
-            </span>
-            <span className="hero-img-sub">
-              Iniciativa da Igreja Batista
-            </span>
-          </div>
-      <div>
-  <h2 className="hero-h2">Curso de Inglês Batista</h2>
-
-  <div className="versiculo-grid">
-    <div className="versiculo-card">
-      <div className="versiculo-header">
-        <span className="versiculo-badge">🇧🇷 Português</span>
-        <span className="versiculo-ref">João 3:16 NVI</span>
-      </div>
-      <blockquote className="versiculo-texto">
-        "Porque Deus tanto amou o mundo que deu o seu Filho Unigênito,
-        para que todo aquele que nele crer não pereça, mas tenha a vida eterna."
-      </blockquote>
-    </div>
-
-    <div className="versiculo-divider-vertical"></div>
-
-    <div className="versiculo-card">
-      <div className="versiculo-header">
-        <span className="versiculo-badge">🇺🇸 English</span>
-        <span className="versiculo-ref">John 3:16 NIV</span>
-      </div>
-      <blockquote className="versiculo-texto">
-        "For God so loved the world that he gave his one and only Son,
-        that whoever believes in him shall not perish but have eternal life."
-      </blockquote>
-    </div>
-  </div>
-</div>
-         
-        </div>
-      </section>
-
-      <section className="stats-section">
-        <div className="stats-grid">
-          {stats.map((s, i) => (
-            <div key={i} className="stat-item">
-              <span className="stat-number">{s.number}</span>
-              <span className="stat-label">{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="who-section">
-        <div className="who-card">
-          <div>
-            <h2 className="who-h2">Quem somos</h2>
-
-            <p className="who-p">
-              Somos uma comunidade batista comprometida com o serviço ao
-              próximo.
-            </p>
-
-            <p className="who-p">
-              Nossos professores são voluntários qualificados que acreditam
-              que o conhecimento deve ser acessível a todos.
-            </p>
-          </div>
-
-          <div className="who-icon">⛪</div>
-        </div>
-      </section>
-
-      <section className="benefits-section">
-        <h2 className="section-h2">O que oferecemos</h2>
-
-        <div className="benefits-grid">
-          {benefits.map((b, i) => (
-            <div key={i} className="ben-card">
-              <span className="ben-icon">{b.icon}</span>
-              <h3 className="ben-h3">{b.title}</h3>
-              <p className="ben-p">{b.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="testi-section">
-        <h2 className="section-h2">
-          O que nossos alunos dizem
-        </h2>
-
-        <div className="testi-grid">
-          {testimonials.map((t, i) => (
-            <div key={i} className="testi-card">
-              <p className="testi-text">"{t.text}"</p>
-              <span className="testi-name">— {t.name}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="final-section">
-        <div className="final-card">
-          <h2 className="final-h2">
-            Inscrições abertas
-          </h2>
-
-          <p className="final-p">
-            As vagas são limitadas e preenchidas por ordem de inscrição.
+    <main className="home-page">
+      <section className="home-welcome" aria-labelledby="home-title">
+        <div className="home-welcome-copy">
+          <span className="home-kicker">PROPÓSITO INGLÊS</span>
+          <h1 id="home-title">
+            Olá, {user?.username || 'estudante'}!
+          </h1>
+          <p>
+            O que você gostaria de fazer hoje? Escolha um caminho e continue
+            sua jornada no inglês.
           </p>
-
-          <button
-            className="btn-red"
-            onClick={onInscrever}
-          >
-            Garantir minha vaga grátis
-          </button>
+        </div>
+        <div className="home-welcome-art" aria-hidden="true">
+          <span>Hi!</span>
+          <span>🌎</span>
         </div>
       </section>
 
-      <footer className="footer">
-        <p>
-          Igreja Batista · Projeto Social de Inglês · Todas as turmas são
-          gratuitas e abertas à comunidade
-        </p>
-      </footer>
-    </div>
+      <section className="home-verse" aria-label="Versículo bíblico">
+        <div className="home-verse-card">
+          <div className="home-verse-header">
+            <span className="home-verse-language">🇧🇷 Português</span>
+            <span className="home-verse-reference">João 3:16 NVI</span>
+          </div>
+          <blockquote>
+            “Porque Deus tanto amou o mundo que deu o seu Filho Unigênito,
+            para que todo aquele que nele crer não pereça, mas tenha a vida
+            eterna.”
+          </blockquote>
+        </div>
+        <div className="home-verse-divider" aria-hidden="true" />
+        <div className="home-verse-card">
+          <div className="home-verse-header">
+            <span className="home-verse-language">🇺🇸 English</span>
+            <span className="home-verse-reference">John 3:16 NIV</span>
+          </div>
+          <blockquote>
+            “For God so loved the world that he gave his one and only Son,
+            that whoever believes in him shall not perish but have eternal
+            life.”
+          </blockquote>
+        </div>
+      </section>
+
+      <section className="home-shortcuts" aria-labelledby="shortcuts-title">
+        <div className="home-section-heading">
+          <div>
+            <span className="home-kicker">SEU ESPAÇO DE APRENDIZADO</span>
+            <h2 id="shortcuts-title">Acesse rapidamente</h2>
+          </div>
+          <p>Jogos, progresso e materiais em um só lugar.</p>
+        </div>
+
+        <div className="home-shortcut-grid">
+          {shortcuts.map((shortcut) => (
+            <button
+              key={shortcut.key}
+              type="button"
+              className="home-shortcut-card"
+              onClick={() => onNavigate(shortcut.key)}
+            >
+              <span className="home-shortcut-icon" aria-hidden="true">
+                {shortcut.icon}
+              </span>
+              <span className="home-shortcut-eyebrow">
+                {shortcut.eyebrow}
+              </span>
+              <span className="home-shortcut-title">{shortcut.title}</span>
+              <span className="home-shortcut-description">
+                {shortcut.description}
+              </span>
+              <span className="home-shortcut-action">
+                {shortcut.action} <span aria-hidden="true">→</span>
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react" 
 import dragQuestions from "../data/drag_and_drop.js"
+import { getMaxScoreForCategory } from "../utils/gameScoring.js"
 
 const STAGES = ["Pick", "Playing", "End"]
 
@@ -19,6 +20,7 @@ const initialState = {
   questions: [],
   currentQuestion: 0,
   score: 0,
+  maxScore: 0,
   completed: false,
 }
 
@@ -26,7 +28,7 @@ const dragReducer = (state, action) => {
   switch (action.type) {
 
     case "START_DRAG_GAME": {        
-      const randomQuestions = getRandomQuestions(action.payload, 5).map((q) => ({  
+      const randomQuestions = getRandomQuestions(action.payload.questions, 5).map((q) => ({
         ...q,
         shuffledWords: shuffleWords(q.sentence),
         correctOrder: q.sentence.split(" "),  
@@ -37,6 +39,7 @@ const dragReducer = (state, action) => {
         gameStage: STAGES[1],
         currentQuestion: 0,           
         score: 0,
+        maxScore: getMaxScoreForCategory(action.payload.category),
         completed: false,
       }
     }
@@ -52,7 +55,12 @@ const dragReducer = (state, action) => {
 
       return {
         ...state,
-        score: state.score + (isCorrect ? 100 : 0),
+        score: Math.min(
+          state.maxScore,
+          state.score + (isCorrect && state.questions.length
+            ? state.maxScore / state.questions.length
+            : 0),
+        ),
         currentQuestion: nextQuestion,
         gameStage: endGame ? STAGES[2] : state.gameStage,
         completed: endGame,

@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 import hangmanWord from "../data/hangmanWords.js";
+import { getMaxScoreForCategory } from "../utils/gameScoring.js"
 
 const STAGES = ["Pick", "Playing", "End"];  // 👈 era "Playling" (typo)
 const MAX_WRONG = 6;
@@ -16,6 +17,7 @@ const initialState = {
   guessedLetters: [],
   wrongLetters: [],
   score: 0,
+  maxScore: 0,
   maxWrong: MAX_WRONG,  // 👈 era "MAX_WRONG" em maiúsculo, padronizado para camelCase
 }
 
@@ -23,7 +25,7 @@ const hangmanReducer = (state, action) => {
   switch (action.type) {
 
     case "START_HANGMAN": {  // 👈 era "START", renomeado para não conflitar
-      const randomWord = getRandomWord(action.payload, 5)  // 👈 era "getRandomWords" (inexistente) e "playload" (typo)
+      const randomWord = getRandomWord(action.payload.words, 5)
       return {
         ...state,
         words: randomWord,
@@ -32,6 +34,7 @@ const hangmanReducer = (state, action) => {
         guessedLetters: [],
         wrongLetters: [],
         score: 0,
+        maxScore: getMaxScoreForCategory(action.payload.category),
       }
     }
 
@@ -64,7 +67,12 @@ const hangmanReducer = (state, action) => {
           guessedLetters: newGuessed,
           wrongLetters: newWrong,
           gameStage: "Feedback",  // 👈 vai para feedback antes de End
-          score: won ? state.score + 100 : state.score,
+          score: Math.min(
+            state.maxScore,
+            won && state.words.length
+              ? state.score + state.maxScore / state.words.length
+              : state.score,
+          ),
         }
       }
 

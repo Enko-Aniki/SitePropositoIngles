@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react"
 import questions from "../data/questionsfull.js"
+import { getMaxScoreForCategory } from "../utils/gameScoring.js"
 
 const STAGES = ["Start","Pick" ,"Playing", "End"]
 
@@ -16,6 +17,7 @@ const initialState = {
   questions: [],  // ← inicia vazio, será preenchido ao escolher categoria
   currentQuestion: 0,
   score: 0,
+  maxScore: 0,
   answerSelected: false,
   selectedOption: null,   // ← adicionado
 }
@@ -39,13 +41,14 @@ const quizReducer = (state, action) => {
       }
     }
     case "START_GAME": {
-      const randomQuestions = getRandomQuestions(action.payload, 10)  // 👈 sorteia aqui
+      const randomQuestions = getRandomQuestions(action.payload.questions, 10)
       return {
         ...state,
         questions: randomQuestions,
         gameStage: STAGES[2],
         currentQuestion: 0,
         score: 0,
+        maxScore: getMaxScoreForCategory(action.payload.category),
         answerSelected: false,
         selectedOption: null,
       }
@@ -70,18 +73,20 @@ const quizReducer = (state, action) => {
     case "SELECT_OPTION": {
   if (state.answerSelected) return state;
 
-  const option = action.payload.option; // O componente só precisa enviar a opção escolhida
+  const option = action.payload.option;
   
   // Pegamos a questão atual diretamente do state do reducer
   const currentQuestion = state.questions[state.currentQuestion];
   const answer = currentQuestion.answer; // Resposta correta vinda da sua base de dados
 
-  let correct = 0;
-  if (option === answer) correct = 100;
+  const pointsPerQuestion = state.questions.length
+    ? state.maxScore / state.questions.length
+    : 0;
+  const correct = option === answer ? pointsPerQuestion : 0;
 
   return {
     ...state,
-    score: state.score + correct,
+    score: Math.min(state.maxScore, state.score + correct),
     answerSelected: true,
     selectedOption: option,
   };

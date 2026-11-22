@@ -12,9 +12,12 @@ export const PickLevel = () => {
   const { getQuizAvailabilityInfo } = useContext(AuthContext)
   const quizAvailability = getQuizAvailabilityInfo()
 
-  const handleQuizStart = (questions) => {
+  const handleQuizStart = (category) => {
     if (!quizAvailability.canPlay) return
-    quizDispatch({ type: "START_GAME", payload: questions })
+    quizDispatch({
+      type: "START_GAME",
+      payload: { category: category.category, questions: category.questions },
+    })
   }
 
   return (
@@ -34,7 +37,7 @@ export const PickLevel = () => {
           <p className="mode-desc">Escolha a alternativa correta</p>
           {quizState.categories.map((category) => (
             <button
-              onClick={() => handleQuizStart(category.questions)}
+              onClick={() => handleQuizStart(category)}
               key={category.category}
               disabled={!quizAvailability.canPlay}
             >
@@ -49,7 +52,7 @@ export const PickLevel = () => {
           <h3>🧩 Monte a Frase</h3>
           <p className="mode-desc">Arraste as palavras na ordem correta</p>
           {dragState.categories.map((category) => (
-            <button onClick={() => dragDispatch({ type: "START_DRAG_GAME", payload: category.questions })} key={category.category}>
+            <button onClick={() => dragDispatch({ type: "START_DRAG_GAME", payload: category })} key={category.category}>
               {category.category}
             </button>
           ))}
@@ -61,7 +64,7 @@ export const PickLevel = () => {
           <h3>💀 Forca</h3>
           <p className="mode-desc">Descubra a palavra letra por letra</p>
           {hangmanState.categories.map((category) => (
-            <button onClick={() => hangmanDispatch({ type: "START_HANGMAN", payload: category.words })} key={category.category}>
+            <button onClick={() => hangmanDispatch({ type: "START_HANGMAN", payload: category })} key={category.category}>
               {category.category}
             </button>
           ))}

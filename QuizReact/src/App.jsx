@@ -62,7 +62,7 @@ function App() {
     <div className="App">
       <Header activePage={activePage} onNavigate={handleNavigate} />
 
-      {activePage === 'home' && <Home onStartQuiz={() => setActivePage('quiz')} />}
+      {activePage === 'home' && <Home onNavigate={handleNavigate} />}
       {activePage === 'quiz' && <Quiz />}
       {activePage === 'conteudo' && <Midias onNavigate={handleNavigate} />}
       {activePage === 'livros' && <Livros />}
