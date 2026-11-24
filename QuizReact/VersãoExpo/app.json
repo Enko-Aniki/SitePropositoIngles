@@ -1,21 +1,24 @@
 {
   "expo": {
-    "name": "Propósito do Inglês",
-    "slug": "proposito-ingles-expo",
-    "scheme": "propositoingles",
+    "name": "prototipo_proposito_ingles",
+    "slug": "snack-d55434e7-b699-4d9b-bdd7-18ab55999a4a",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "plugins": ["expo-router"],
-    "experiments": {
-      "typedRoutes": false
-    },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "br.org.propositodoingles"
+      "supportsTablet": true
     },
     "android": {
-      "package": "br.org.propositodoingles"
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
     }
   }
 }
