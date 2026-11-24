@@ -4,6 +4,7 @@ import { FlagMark } from './FlagMark'
 
 const navItems = [
   ['home', 'Início'],
+  ['jogos', 'Jogos'],
   ['conteudo', 'Conteúdo'],
   ['sobre', 'Sobre'],
 ]
